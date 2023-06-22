@@ -1,4 +1,4 @@
-package org.feather;
+package com.feather;
 
 public class Main {
     public static void main(String[] args) {
