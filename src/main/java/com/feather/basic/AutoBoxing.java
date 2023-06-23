@@ -6,11 +6,15 @@ package com.feather.basic;
  */
 public class AutoBoxing {
     public static void main(String[] args) {
+        // 自动装箱
         Integer a = 3;
-        Integer a1 = Integer.valueOf(3);
+        // 等价于
+        // Integer a = Integer.valueOf(3);
 
 
+        // 自动拆箱
         int b = a;
-        int b1 = a.intValue();
+        //  等价于
+        //  int b = a.intValue();
     }
 }
