@@ -1,7 +1,5 @@
 package com.feather.basic;
 
-import com.feather.basic.Person;
-
 import java.lang.reflect.Method;
 import java.util.Arrays;
 

@@ -1,8 +1,5 @@
 package com.feather.gof.singleton;
 
-import javax.jws.Oneway;
-import java.util.HashMap;
-
 public class SingletonDoubleCheck {
     // https://zhuanlan.zhihu.com/p/160835278
     // https://blog.csdn.net/shallynever/article/details/52503139

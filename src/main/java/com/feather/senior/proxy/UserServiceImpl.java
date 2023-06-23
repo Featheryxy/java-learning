@@ -1,4 +1,4 @@
-package com.feather.proxy;
+package com.feather.senior.proxy;
 
 import lombok.extern.slf4j.Slf4j;
 

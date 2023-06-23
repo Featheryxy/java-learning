@@ -1,7 +1,6 @@
 package com.feather.util;
 
 import java.io.File;
-import java.util.List;
 
 public class FileUtil {
     private FileUtil() {

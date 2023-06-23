@@ -6,8 +6,8 @@ import com.feather.gof.command.command.MacroCommand;
 import com.feather.gof.command.drawer.DrawCanvas;
 import com.feather.gof.command.drawer.DrawCommand;
 
-import java.awt.event.*;
 import javax.swing.*;
+import java.awt.event.*;
 
 public class Main extends JFrame implements ActionListener, MouseMotionListener, WindowListener {
     // 绘制的历史记录

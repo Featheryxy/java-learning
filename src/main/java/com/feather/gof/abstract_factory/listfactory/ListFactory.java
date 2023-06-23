@@ -1,6 +1,9 @@
 package com.feather.gof.abstract_factory.listfactory;
 
-import com.feather.gof.abstract_factory.factory.*;
+import com.feather.gof.abstract_factory.factory.Factory;
+import com.feather.gof.abstract_factory.factory.Link;
+import com.feather.gof.abstract_factory.factory.Page;
+import com.feather.gof.abstract_factory.factory.Tray;
 
 public class ListFactory extends Factory {
     public Link createLink(String caption, String url) {

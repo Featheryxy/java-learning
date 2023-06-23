@@ -1,4 +1,4 @@
-package com.feather.reflection;
+package com.feather.senior.reflection;
 
 /**
  * @Date 2023/1/17 10:42
@@ -15,7 +15,7 @@ public class OneClass {
         System.out.println(stuClass == stuClass2);//判断第一种方式获取的Class对象和第二种方式获取的是否是同一个
         //第三种方式获取Class对象
         try {
-            Class stuClass3 = Class.forName("com.feather.reflection.Student");//注意此字符串必须是真实路径，就是带包名的类路径，包名.类名
+            Class stuClass3 = Class.forName("com.feather.senior.reflection.Student");//注意此字符串必须是真实路径，就是带包名的类路径，包名.类名
             System.out.println(stuClass3 == stuClass2);//判断三种方式是否获取的是同一个Class对象
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

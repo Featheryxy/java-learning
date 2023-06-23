@@ -1,7 +1,5 @@
 package com.feather.concurrent;
 
-import com.sun.corba.se.spi.orbutil.threadpool.ThreadPool;
-
 import java.util.concurrent.*;
 
 public class CASDemo {

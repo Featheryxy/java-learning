@@ -1,4 +1,4 @@
-package com.feather.reflection;
+package com.feather.senior.reflection;
 
 import java.lang.reflect.Constructor;
 
@@ -8,10 +8,10 @@ import java.lang.reflect.Constructor;
  */
 public class IsSameObj {
     public static void main(String[] args) throws Exception{
-        Class clazz = Class.forName("com.feather.reflection.Student");
+        Class clazz = Class.forName("com.feather.senior.reflection.Student");
         Constructor con = clazz.getConstructor(null);
         Object obj = con.newInstance();
-        com.feather.reflection.Student stu = (Student)obj;
+        com.feather.senior.reflection.Student stu = (Student)obj;
 //        System.out.println(clazz == obj); // false
         System.out.println("强转后对象是否相同：" + (stu == obj));
         System.out.println("equals: "+stu.equals(obj));

@@ -1,4 +1,4 @@
-package com.feather.reflection;
+package com.feather.senior.reflection;
 
 import java.lang.reflect.Constructor;
 
@@ -9,7 +9,7 @@ import java.lang.reflect.Constructor;
 public class Constructors {
     public static void main(String[] args) throws Exception {
         //1.加载Class对象
-        Class clazz = Class.forName("com.feather.reflection.Student");
+        Class clazz = Class.forName("com.feather.senior.reflection.Student");
         //2.获取所有公有构造方法
         System.out.println("**********************所有公有构造方法*********************************");
         Constructor[] conArray = clazz.getConstructors();
@@ -29,7 +29,7 @@ public class Constructors {
         //调用构造方法
         Object obj = con.newInstance();
         System.out.println("obj = " + obj);
-        com.feather.reflection.Student stu = (Student)obj;
+        com.feather.senior.reflection.Student stu = (Student)obj;
         System.out.println("stu = " + stu);
         System.out.println("强转后对象是否相同：" + (stu == obj));
         System.out.println("equals: "+stu.equals(obj));

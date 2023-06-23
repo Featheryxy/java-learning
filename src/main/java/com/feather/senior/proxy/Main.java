@@ -1,9 +1,7 @@
-package com.feather.proxy;
+package com.feather.senior.proxy;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**

@@ -1,10 +1,6 @@
 package com.feather.basic;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * @Date 2023/4/25 19:06

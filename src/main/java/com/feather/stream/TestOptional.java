@@ -10,8 +10,6 @@ import com.feather.stream.entity.Book;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 public class TestOptional {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.feather.proxy;
+package com.feather.senior.proxy;
 
 /**
  * @author Milo
