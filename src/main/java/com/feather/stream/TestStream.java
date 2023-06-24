@@ -4,7 +4,7 @@ package com.feather.stream;
 import com.feather.stream.entity.Author;
 import com.feather.stream.entity.Book;
 import com.feather.stream.entity.Product;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.*;
 import java.util.function.BinaryOperator;

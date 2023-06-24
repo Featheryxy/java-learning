@@ -1,6 +1,7 @@
 package com.feather.function.base;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 
 /**
  * @Date 2022/10/3 12:46

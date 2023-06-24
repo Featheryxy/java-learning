@@ -1,4 +1,4 @@
-package com.feather.callbackdemo;
+package com.feather.callback;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

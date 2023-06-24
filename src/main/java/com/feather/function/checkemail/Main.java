@@ -1,6 +1,6 @@
 package com.feather.function.checkemail;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.function.Function;
 import java.util.regex.Pattern;
