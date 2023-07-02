@@ -1,6 +1,7 @@
 package com.feather.senior.reflection;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
 /**
  * @Date 2023/1/17 10:58
@@ -8,9 +9,7 @@ import java.lang.reflect.Constructor;
  */
 public class Constructors {
     public static void main(String[] args) throws Exception {
-        //1.加载Class对象
-        Class clazz = Class.forName("com.feather.senior.reflection.Student");
-        //2.获取所有公有构造方法
+        Class<?> clazz = Class.forName("com.feather.senior.reflection.Student");
         System.out.println("**********************所有公有构造方法*********************************");
         Constructor[] conArray = clazz.getConstructors();
         for(Constructor c : conArray){
@@ -40,8 +39,14 @@ public class Constructors {
 //        con.setAccessible(true);//暴力访问(忽略掉访问修饰符)
         obj = con.newInstance('男');
         System.out.println("******************多态*******************************");
-        Student student = (Student)(new Object());
-        System.out.println(student);
+//        Student student = (Student)(new Object());
+//        System.out.println(student);
         // java.lang.Object cannot be cast to com.feather.reflection.Student
+
+
+        Method method = clazz.getDeclaredMethod("eat");
+        Student student1 = new Student();
+        method.setAccessible(true);
+        method.invoke(student1);
     }
 }

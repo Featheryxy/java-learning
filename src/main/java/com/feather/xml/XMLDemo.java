@@ -81,7 +81,7 @@ public class XMLDemo {
     }
 
     public static void main(String args[]) {
-        String fileName = "F:\\GitHubNote\\HSTools\\src\\main\\java\\ind\\milo\\demo\\xml\\books.xml";
+        String fileName = "F:\\GitHubNote\\java-learning\\src\\main\\java\\com\\feather\\xml\\books.xml";
         try {
             List<Book> books=XMLDemo.listBooks(fileName);
             for(Book book:books) {
