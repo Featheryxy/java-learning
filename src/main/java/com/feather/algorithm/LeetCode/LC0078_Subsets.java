@@ -54,14 +54,14 @@ public class LC0078_Subsets {
         res.add(new ArrayList<>(path));
         System.out.println("res: "+res);
         for (int i = beginIndex; i < nums.length; i++) {
-            System.out.println("before add, path:"+ path);
+            System.out.println("before add, path:"+ path + ", i: "+i + ", beginIndex: "+beginIndex);
             path.add(nums[i]);
-            System.out.println("affter add, path:"+ path);
+            System.out.println("affter add, path:"+ path+ ", i: "+i + ", beginIndex: "+beginIndex);
             // 这里一定要i+1，
             dfs(res, path, nums, i + 1);
-            System.out.println("before remove, path:"+ path);
+            System.out.println("before remove, path:"+ path+ ", i: "+i + ", beginIndex: "+beginIndex);
             path.remove(path.size()-1);
-            System.out.println("affter remove, path:"+ path);
+            System.out.println("affter remove, path:"+ path+ ", i: "+i + ", beginIndex: "+beginIndex);
         }
     }
 
