@@ -83,5 +83,5 @@ public class LC0376_Wiggle_Subsequence {
         return res;
     }
     
-    Tag[] tags = {Tag.GREDDY, Tag.AGAIN};
+    Tag[] tags = {Tag.GREEDY, Tag.AGAIN};
 }

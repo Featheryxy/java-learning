@@ -15,7 +15,7 @@ public enum Tag {
     TWO_POINTERS,
 
     BACKTRACKING,
-    GREDDY,
+    GREEDY,
 
     AGAIN
 }
