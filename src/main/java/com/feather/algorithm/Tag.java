@@ -14,6 +14,8 @@ public enum Tag {
     BINARY_SEARCH,
     TWO_POINTERS,
 
-    BACKTRACKING
+    BACKTRACKING,
+    GREDDY,
 
+    AGAIN
 }
