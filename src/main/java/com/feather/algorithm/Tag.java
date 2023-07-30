@@ -17,5 +17,6 @@ public enum Tag {
     BACKTRACKING,
     GREEDY,
 
-    AGAIN
+    AGAIN;
+
 }

@@ -19,6 +19,10 @@ public class Main {
         System.out.println(p2.name);
         p2.run();
 
+        Teacher teacher = new Teacher();
+        System.out.println(teacher.name);
+
+
         // todo 为什么变量的打印都是编译时的，
         /**
          * 父类People的名称
