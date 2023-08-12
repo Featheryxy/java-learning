@@ -1,5 +1,6 @@
 package com.feather.algorithm.LeetCode;
 
+import com.feather.algorithm.Tag;
 import org.junit.Test;
 
 /**
@@ -32,9 +33,27 @@ import org.junit.Test;
 public class LC0053_Maximum_Subarray {
     @Test
     public void test(){
-        int[] nums = {-1, -2};
-        System.out.println(maxSubArray(nums));
+        int[] nums = {-2};
+        System.out.println(maxSubArray2(nums));
     }
+
+    // 一个负数加上一个数，只会让该数更小
+    public int maxSubArray2(int[] nums) {
+        int res = Integer.MIN_VALUE;
+        int tmpSum = 0; // 区间和
+        for (int i = 0; i < nums.length; i++) {
+            tmpSum += nums[i];
+            res = Math.max(tmpSum, res);
+
+            if (tmpSum < 0) { // 区间重置，一个负数加上一个数，只会让该数更小
+                tmpSum = 0;
+            }
+        }
+
+        return res;
+    }
+
+
 
     public int maxSubArray(int[] nums) {
         // 求最大值，初始给最小值
@@ -66,4 +85,6 @@ public class LC0053_Maximum_Subarray {
         }
         return res;
     }
+
+    public Tag[] tags = {Tag.GREEDY};
 }
