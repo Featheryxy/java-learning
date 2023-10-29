@@ -2,9 +2,12 @@ package com.feather.stream;
 
 import com.feather.stream.entity.Author;
 import com.feather.stream.entity.Book;
+import com.feather.util.StringUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -49,6 +52,11 @@ public class StreamDemo {
     }
 
     @Test
+    public void test(){
+        System.out.println(authors);
+    }
+
+    @Test
     public void test1() {
         authors.stream().
                 distinct().
@@ -72,19 +80,27 @@ public class StreamDemo {
         // 双列集合: 先将双列对象转换成单例后再创建
         Map<String, String> map = new HashMap<>();
         map.put("Mike", "male");
-        map.put("Lucy", "female");
-        map.put("Lisa", "female");
-
+        map.put("", "female");
+        map.put("LiLucysa", "female");
         Set<Map.Entry<String, String>> entries = map.entrySet();
-        Optional<String> first = entries.stream()
-                .filter(entry -> "male".equals(entry.getValue()))
-                .map(entry -> "小明").findFirst();
-        if (first.isPresent()) {
-            System.out.println(first.get());
-        }
+        String name = entries.stream()
+                .filter(e -> StringUtils.equals("male2", e.getValue()))
+                .map(e -> "小明")
+                .findFirst()
+                .orElseGet(() -> "小红");
+        System.out.println(name);
 
-        System.out.println(first.isPresent());
-        boolean present = first.isPresent();
+
+//        Set<Map.Entry<String, String>> entries = map.entrySet();
+//        Optional<String> first = entries.stream()
+//                .filter(entry -> "male".equals(entry.getValue()))
+//                .map(entry -> "小明").findFirst();
+//        if (first.isPresent()) {
+//            System.out.println(first.get());
+//        }
+//
+//        System.out.println(first.isPresent());
+//        boolean present = first.isPresent();
 
 
         // Mike=male

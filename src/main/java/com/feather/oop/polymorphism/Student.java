@@ -1,13 +1,19 @@
 package com.feather.oop.polymorphism;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @author Milo
  * @date 2023/6/23 20:54
  */
-public class Student extends People {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Student  {
     private String name = "子类Student的名称";
 
-    @Override
     public void run() {
         System.out.println("学生可以跑");
     }

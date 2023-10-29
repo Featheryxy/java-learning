@@ -12,25 +12,39 @@ import java.util.stream.Stream;
  */
 public class StringStream {
     @Test
+    public void test(){
+        String str = "0,1,2,3,4,5,6,7,8,9";
+        String[] split = str.split(",");
+        String beg = "(";
+        StringBuilder stringBuilder = new StringBuilder(beg);
+        for (int i = 0; i < split.length; i++) {
+            stringBuilder.append("'")
+                    .append(split[i])
+                    .append("'");
+            if (i != split.length-1) {
+                stringBuilder.append(",");
+            }
+        }
+        stringBuilder.append(")");
+        System.out.println(stringBuilder.toString());
+    }
+
+    @Test
+    public void testReduce(){
+        String str = "0,1,2,3,4,5,6,7,8,9";
+        String[] split = str.split(",");
+        String reduce = Arrays.stream(split).reduce("(", (x, y) -> x = x + "','" + y);
+        System.out.println(reduce);
+    }
+
+    @Test
     public void test1() {
         String str = "0,1,2,3,4,5,6,7,8,9";
         String[] split = str.split(",");
-//        String reduce = Arrays.stream(split).reduce("(", (x, y) -> x = x + "','" + y);
-//        System.out.println(reduce);
         String collect = Arrays.stream(split)
                 .map(s -> "'" + s + "'")
                 .collect(Collectors.joining(",", "(", ")"));
-        String collect1 = Arrays.stream(str.split(","))
-                .map(s -> "'" + s + "'")
-                .collect(Collectors.joining(","));
         System.out.println(collect);
-        System.out.println(collect1);
-
-        Integer a = 13;
-        int i = a;
-
-        int i1 = Integer.parseInt("13");
-        Integer integer = Integer.valueOf("13");
     }
 
     @Test
