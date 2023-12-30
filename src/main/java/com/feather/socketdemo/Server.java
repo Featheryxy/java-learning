@@ -12,9 +12,17 @@ import java.net.Socket;
  */
 public class Server {
     public static void main(String[] args) {
+        new Thread(() -> startServer(8081)).start();
+        new Thread(() -> startServer(8082)).start();
+//        while (true) {
+//
+//        }
+    }
+
+    private static void startServer(int port) {
         try {
             //创建一个ServerSocket监听8080端口
-            ServerSocket server = new ServerSocket(8080);
+            ServerSocket server = new ServerSocket(port);
             //等待请求
             Socket socket = server.accept();
             //接收到请求后使用socket进行通信，创建BufferedReader用于读取数据，
