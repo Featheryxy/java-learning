@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
+ * 以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。
+ * 请你合并所有重叠的区间，
+ * 并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
  * <p>
  *  
  * <p>
@@ -27,23 +29,23 @@ public class LC0056MergeIntervals {
             System.out.println(Arrays.toString(num));
         }
 
-        ArrayList<int[]> ans = new ArrayList<>();
-        int length = intervals.length;
-        int l = intervals[0][0], r = intervals[0][1];
-        for (int i = 1; i < length; i++) {
-            int tmpLeft = intervals[i][0];
-            int tmpRight = intervals[i][1];
-            if (tmpLeft > r) {
-                ans.add(new int[]{l, r});
-                l = tmpLeft;
-                r = tmpRight;
-
-            } else {
-                r = Math.max(r, tmpRight);
-            }
-
-
-        }
+//        ArrayList<int[]> ans = new ArrayList<>();
+//        int length = intervals.length;
+//        int l = intervals[0][0], r = intervals[0][1];
+//        for (int i = 1; i < length; i++) {
+//            int tmpLeft = intervals[i][0];
+//            int tmpRight = intervals[i][1];
+//            if (tmpLeft > r) {
+//                ans.add(new int[]{l, r});
+//                l = tmpLeft;
+//                r = tmpRight;
+//
+//            } else {
+//                r = Math.max(r, tmpRight);
+//            }
+//
+//
+//        }
 
     }
 
@@ -63,8 +65,9 @@ public class LC0056MergeIntervals {
         Arrays.sort(intervals, (num1, num2) -> {
             return num1[0] - num2[0];
         });
+        // 二维数组中的第一个数组
         int l = intervals[0][0], r = intervals[0][1];
-
+        //
         for (int i = 1; i < length; i++) {
             int tmpLeft = intervals[i][0];
             int tmpRight = intervals[i][1];
@@ -83,7 +86,7 @@ public class LC0056MergeIntervals {
                 ret.add(new int[]{l, r});
             }
         }
-        int size = ret.size();
+
         return ret.toArray(new int[0][0]);
 
     }

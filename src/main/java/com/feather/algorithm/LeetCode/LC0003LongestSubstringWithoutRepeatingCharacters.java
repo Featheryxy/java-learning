@@ -89,6 +89,34 @@ public class LC0003LongestSubstringWithoutRepeatingCharacters {
         return longestSubstr.length();
     }
 
+    public int lengthOfLongestSubstring(String s) {
+        int len = s.length();
+        if (len <= 1) {
+            return len;
+        }
+        int l = 0;
+        int r = 1;
+        String temMaxLongStr = s.substring(0, 1);
+
+        for(; r < len; r++) {
+            // 当前字符
+            char currChr = s.charAt(r);
+            String currStr = s.substring(l, r);
+
+            // 如果当前字符串包含当前
+            if(currStr.contains(currChr+"")){
+                l = s.substring(0, r).lastIndexOf(currChr) + 1;
+            }
+
+            String append = s.substring(l, r+1);
+            if (append.length() > temMaxLongStr.length()) {
+                temMaxLongStr = append;
+            }
+        }
+
+        return temMaxLongStr.length();
+
+    }
     public static int lengthOfLongestSubstringOffice(String s) {
         int left = 0, n = s.length(), max_len = 0;
         Map<Character, Integer> map = new HashMap<>();
