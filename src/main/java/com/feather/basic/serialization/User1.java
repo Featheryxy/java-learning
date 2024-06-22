@@ -41,14 +41,7 @@ public class User1 implements Serializable {
         this.success = success;
     }
 
-    @Override
-    public String toString() {
-        return "User1{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", isSuccess=" + isSuccess +
-                '}';
-    }
+
 
     private Object readResolve(){
         Object singleton = new Object();
