@@ -15,6 +15,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public boolean addAge(String age) {
+        log.debug("Adding addAge: {}", age);
+        return false;
+    }
+
+    @Override
     public String sing() {
         try {
             Thread.sleep(1000);

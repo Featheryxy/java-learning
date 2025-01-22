@@ -1,5 +1,7 @@
 package com.feather.algorithm.LeetCode;
 
+import com.feather.algorithm.Tag;
+
 import java.util.Arrays;
 
 /**
@@ -25,10 +27,36 @@ import java.util.Arrays;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class LC0075_Sort_Colors {
+    static Tag[] tags = {Tag.ARRAY, Tag.THREE_POINTERS};
+
     public static void main(String[] args) {
         int[] nums = {2, 0, 2, 1, 1, 0};
-        sortColors2Error(nums);
+//        int[] nums = {2, 0, 1};
+        sortColors3(nums);
         System.out.println(Arrays.toString(nums));
+    }
+
+    // 三指针，i,j, k
+    // [i, j-1] 维护 0
+    // [j, k-1] 维护1
+    // [k, len-1] 维护2
+    // 对于循环条件j，k。一次只能更新一个，k or j，
+    public static void sortColors3(int[] nums) {
+        int len = nums.length;
+        int i=0, j=0, k=len-1;
+        while (j <= k) {
+            int num = nums[j];
+            if (num == 0) {
+                swap(nums, i,j);
+                i++;
+                j++;
+            } else if (num == 1) {
+                j++;
+            } else {
+                swap(nums, j, k);
+                k--;
+            }
+        }
     }
 
     // method2:

@@ -34,8 +34,8 @@ public class ALC0015_3Sum {
 
     public static void main(String[] args) {
 //        int[] nums = {-1, 0, 1, 2, -1, -4};
-//        int[] nums = {0, 0, 0, 0};
-        int[] nums = {-2, 0, 0, 2, 2};
+        int[] nums = {0, 0, 0};
+//        int[] nums = {-2, 0, 0, 2, 2};
         System.out.println(threeSum(nums));
 
     }
@@ -68,7 +68,7 @@ public class ALC0015_3Sum {
 //                    tmpAns.add(nums[r]);
 //                    ans.add(tmpAns);
                     ans.add(Arrays.asList(fixedNum, nums[l], nums[r]));
-                    // *** 这里一定要有，否则会有重复答案，指向下一个与当前答案不同的值
+                    // *** 指向最后一个相同的值 ,这里一定要有，否则会有重复答案，
                     while (l < r && nums[l] == nums[l + 1]) l++;
                     while (l < r && nums[r] == nums[r - 1]) r--;
                     l++;
@@ -90,5 +90,42 @@ public class ALC0015_3Sum {
         }
 
         return ans;
+    }
+
+
+    public static List<List<Integer>> threeSum2(int[] nums) {
+        Arrays.sort(nums);
+        int len = nums.length;
+        List<List<Integer>> res = new ArrayList<>();
+        int pre = nums[0];
+        for(int i=0; i<len; i++) {
+            if(i != 0)    {
+                if(nums[i] == pre){
+                    continue;
+                } else {
+                    pre = nums[i];
+                }
+            }
+
+            for(int j=i+1; j<len;j++){
+                if(j+1<len && nums[j+1]==nums[j]){
+                    continue;
+                }
+
+                for(int k=j+1; k<len; k++) {
+                    if(k+1<len && nums[k+1]==nums[k]){
+                        continue;
+                    }
+                    if(nums[i]+nums[j]+nums[k] == 0) {
+                        List<Integer> temp = new ArrayList<>();
+                        temp.add(nums[i]);
+                        temp.add(nums[j]);
+                        temp.add(nums[k]);
+                        res.add(temp);
+                    }
+                }
+            }
+        }
+        return res;
     }
 }

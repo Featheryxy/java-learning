@@ -20,26 +20,29 @@ public class Main {
                 // 增强了 被代理对象的能力
                 (proxy, method, args1) -> {
                     Object invoke;
-                    if ("addUser".equals(method.getName())) {
-                        log.debug("ready to add user");
-                        // 一定要使用被代理的对象 userServiceImpl， 如果使用 proxy， 则变成了递归
-                        invoke = method.invoke(userServiceImpl, args1);
-                    } else if ("sing".equals(method.getName())) {
-                        log.debug("开始唱歌");
-                        long begin = System.currentTimeMillis();
-                        invoke = method.invoke(userServiceImpl, args1);
-                        log.debug((String)invoke);
-                        long end = System.currentTimeMillis();
-                        log.debug("结束唱歌，一共唱了{}秒", (end-begin)/1000);
-                    } else {
-                        invoke = method.invoke(userServiceImpl, args1);
-                    }
+//                    if ("addUser".equals(method.getName())) {
+//                        log.debug("ready to add user");
+//                        // 一定要使用被代理的对象 userServiceImpl， 如果使用 proxy， 则变成了递归
+//                        invoke = method.invoke(userServiceImpl, args1);
+//                    } else if ("sing".equals(method.getName())) {
+//                        log.debug("开始唱歌");
+//                        long begin = System.currentTimeMillis();
+//                        invoke = method.invoke(userServiceImpl, args1);
+//                        log.debug((String)invoke);
+//                        long end = System.currentTimeMillis();
+//                        log.debug("结束唱歌，一共唱了{}秒", (end-begin)/1000);
+//                    } else {
+                        log.debug("invoke begin");
+                    invoke = method.invoke(userServiceImpl, args1);
+                    log.debug("invoke end");
+//                    }
 
                     return invoke;
                 });
 
         UserService userServiceProxy = (UserService)proxyInstance;
         userServiceProxy.addUser("Alice");
-        userServiceProxy.sing();
+        userServiceProxy.addAge("age");
+        System.out.println(userServiceProxy.sing());
     }
 }

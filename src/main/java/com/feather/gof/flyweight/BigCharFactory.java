@@ -16,7 +16,7 @@ public class BigCharFactory {
         return singleton;
     }
 
-    // 生成（共享）BigChar类的实例
+    // 生成（共享）BigChar类的实例 HashMap不是线程安全的
     public synchronized BigChar getBigChar(char charName) {
         BigChar bigChar = (BigChar) pool.get("" + charName);
         if (bigChar == null) {

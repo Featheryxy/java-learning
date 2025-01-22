@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class LC0056MergeIntervals {
     public static void main(String[] args) {
-        int[][] intervals = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
+        int[][] intervals = {{1, 3}, {2, 6}, {8, 10}, {8, 10}};
         // answer: [[1,6],[8,10],[15,18]]
         for (int[] num : merge(intervals)) {
             System.out.println(Arrays.toString(num));
@@ -55,7 +55,7 @@ public class LC0056MergeIntervals {
     // 双指针，维护一个窗口l，r，用以记录不重叠的区间,即答案
     // 例子中[1，3]，b = [2，6] 发生了重叠，定义重叠为 2 在区间1，3中。
     // 初始时
-    public static int[][] merge(int[][] intervals) {
+    public static int[][] merge1(int[][] intervals) {
         List<int[]> ret = new ArrayList<>();
         int length = intervals.length;
         if (length <= 1) {
@@ -89,5 +89,33 @@ public class LC0056MergeIntervals {
 
         return ret.toArray(new int[0][0]);
 
+    }
+
+    public static int[][] merge(int[][] intervals) {
+        List<int[]> ret = new ArrayList<>();
+        // 按照左端点从小到大排序
+        Arrays.sort(intervals, (p, q) -> p[0] - q[0]);
+
+        // 遍历下一个数组，将上一个结果插入结果集中，所有遍历结束后，最后一个结果没有插入到结果集中
+
+        int ansS = intervals[0][0];
+        int ansE = intervals[0][1];
+        for (int i = 1; i < intervals.length; i++) {
+            int nextS = intervals[i][0];
+            int nextE = intervals[i][1];
+
+            if (ansE < nextS) {
+                ret.add(new int[]{ansS, ansE});
+                ansS = nextS;
+                ansE = nextE;
+            } else if (nextE <= ansE) {
+                ansE = ansE;
+            } else {
+                ansE = nextE;
+            }
+        }
+        ret.add(new int[]{ansS, ansE});
+
+        return ret.toArray(new int[0][0]);
     }
 }

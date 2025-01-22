@@ -13,6 +13,7 @@ public enum Tag {
     RECURSION,
     BINARY_SEARCH,
     TWO_POINTERS,
+    THREE_POINTERS,
 
     BACKTRACKING,
     GREEDY,

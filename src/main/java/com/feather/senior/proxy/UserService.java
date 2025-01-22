@@ -7,5 +7,7 @@ package com.feather.senior.proxy;
 public interface UserService {
     boolean addUser(String name);
 
+    boolean addAge(String age);
+
     String sing();
 }

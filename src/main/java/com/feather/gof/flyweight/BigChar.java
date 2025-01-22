@@ -7,7 +7,7 @@ public class BigChar {
     private String fontdate;
 
     public BigChar(char charName) {
-        String path = "F:\\JavaFX\\HSTools\\src\\main\\java\\ind\\milo\\gof\\flyweight\\bigchar\\";
+        String path = "F:\\GitHubNote\\java-learning\\src\\main\\java\\com\\feather\\gof\\flyweight\\bigchar\\";
         String file = path+"big" + charName + ".txt";
         fontdate = NIOUtil.read(file);
     }
