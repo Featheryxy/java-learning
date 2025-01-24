@@ -1,5 +1,6 @@
 package com.feather.algorithm.LeetCode;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,8 +24,24 @@ public class LC0003LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
 //        String s = "abcabcbb";
         String s = "aab";
-        System.out.println(lengthOfLongestSubstring(s));
+        System.out.println(lengthOfLongestSubstringA(s));
     }
+
+    public static int lengthOfLongestSubstringA(String s) {
+        int[] pos = new int[128];
+        Arrays.fill(pos, -1);
+
+        char[] chars = s.toCharArray();
+        int maxSubstringLen = 0;
+        for (int low = 0, fast = 0; fast < chars.length; fast++) {
+            char charTemp = chars[fast];
+            low = Math.max(pos[charTemp] + 1, low);
+            maxSubstringLen = Math.max(maxSubstringLen, fast - low + 1);
+            pos[charTemp] = fast;
+        }
+        return maxSubstringLen;
+    }
+
 
     // 维护一个动态的滑动窗口，用以记录无重复字符的最长子串
     // 同时移动了两个指针
