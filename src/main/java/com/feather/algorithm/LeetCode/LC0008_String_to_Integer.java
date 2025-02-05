@@ -26,9 +26,6 @@ public class LC0008_String_to_Integer {
      *     字符转数字可以通过减号 '1'-'0' = 1
      *     移动指针时考虑是否越界
      *
-     * @param s
-     * @param numRows
-     * @return
      */
     public int myAtoi(String s) {
         char[] chars = s.toCharArray();

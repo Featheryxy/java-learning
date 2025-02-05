@@ -30,15 +30,50 @@ package com.feather.algorithm.LeetCode;
  * 链接：https://leetcode.cn/problems/integer-to-roman
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class ALC0012IntegertoRoman {
+public class LC0012_Integer_to_Roman {
     public static void main(String[] args) {
-        int num = 3;
+        int num = 3749;
         System.out.println(intToRoman(num));
+    }
+
+    /**
+     * LC0012 整数转罗马数字
+     * 数据结构：String
+     * 解题方法：
+     * 定义：值以4，9开头时，减法模式  4 用IV  表示
+     * 解题思路：
+     *    num = baseNum * count+余数
+     *    余数 = num - baseNum * count
+     *
+     * 初始时：
+     *
+     *
+     * 遍历时：
+     * ps:
+     * tips:
+     * @param s
+     * @return
+     */
+    public static String intToRoman(int num) {
+        int[] baseNums = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] roman = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < baseNums.length; i++) {
+            if (num / baseNums[i] > 0) {
+                int count = num / baseNums[i];
+                for (int j = 0; j < count; j++) {
+                    builder.append(roman[i]);
+                }
+                num = num - count * baseNums[i];
+            }
+        }
+        return builder.toString();
     }
 
 
     //
-    public static String intToRoman(int num) {
+    public static String intToRoman2(int num) {
         //        I             1
         //        V             5
         //        X             10

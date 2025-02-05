@@ -20,11 +20,39 @@ package com.feather.algorithm.LeetCode;
  * 链接：https://leetcode.cn/problems/longest-common-prefix
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class LC0014LongestCommonPrefix {
+public class LC0014_Longest_Common_Prefix {
     public static void main(String[] args) {
-        String[] strArr = new String[]{"flower", "flow", "flight"};
-        String s = longestCommonPrefixAgain(strArr);
+//        String[] strArr = new String[]{"flower", "flow", "flight"};
+        String[] strArr = new String[]{"dog","racecar","car"};
+        String s = longestCommonPrefix(strArr);
         System.out.println(s);
+    }
+
+    /**
+     * 数据结构：String
+     * 解题方法：暴力法
+     * 定义：
+     * 解题思路：
+     *      1. 取第一个字符串为基本字符串
+     *      2. 从第二个字符串开始遍历，
+     *      3. 依次比对每个索引位置上的字符，如果字符串越界 或 当前字符和其他字符不同时返回
+     * 初始时：
+     * 遍历时：
+     *
+    */
+    public static String longestCommonPrefix(String[] strs) {
+        char[] chars = strs[0].toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            char currChar = chars[i];
+            for (int j = 1; j < strs.length; j++) {
+                // 字符串越界 或 当前字符和其他字符不同时返回
+                if (strs[j].length() == i ||strs[j].charAt(i) != currChar) {
+                    return strs[0].substring(0, i);
+                }
+
+            }
+        }
+        return strs[0];
     }
 
     //  公共前缀，所有的字符都有相同的前缀
@@ -69,7 +97,7 @@ public class LC0014LongestCommonPrefix {
      * 第一个和第二个字符进行对比，获取公共前缀，
      * 将第三个和公共前缀进行对比，获取新的公共前缀，以此类推
      */
-    public static String longestCommonPrefix(String[] strs) {
+    public static String longestCommonPrefix2(String[] strs) {
         String ans = strs[0];
         for (int i = 1; i < strs.length; i++) {
             String tmpStr = strs[i];
@@ -85,5 +113,5 @@ public class LC0014LongestCommonPrefix {
         return ans;
     }
 
-    ;
+
 }

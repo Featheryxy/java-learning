@@ -33,14 +33,64 @@ import java.util.Map;
  * 链接：https://leetcode.cn/problems/roman-to-integer
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class LC0013RomanToInteger {
+public class LC0013_Roman_to_Integer {
     public static void main(String[] args) {
         System.out.println(romanToInt("MCMXCIV")); // 3
 //        System.out.println(romanToInt("III")); // 3
 //        System.out.println(romanToInt("XLIX")); // 49
     }
 
+
+    /**
+     * LC0013 罗马数字转整数
+     * 数据结构：String
+     * 解题方法：
+     * 定义：
+     *      结果数
+     *      罗马数字和阿拉伯数字的映射关系
+     * 解题思路：。
+     *      遍历字符串，如果该字符代表的数字小于其后一个字符的数字，
+     *      则在结果数中减去该数字，否则加上该数字
+     * 初始时：
+     * 遍历时：
+     * ps:
+     *
+     *
+     *
+    */
     public static int romanToInt(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+
+        int ret = 0;
+        int length = s.length();
+        for (int i = 0; i < length; i++) {
+
+            if (i + 1 < length ) {
+                char currChar = s.charAt(i);
+                char nextChar = s.charAt(i+1);
+                if (map.get(currChar) < map.get(nextChar)) {
+                    ret -= map.get(currChar);
+                } else {
+                    ret += map.get(currChar);
+                }
+
+            } else {
+                ret += map.get(s.charAt(i));
+
+            }
+        }
+        return ret;
+    }
+
+
+    public static int romanToInt2(String s) {
         Map<String, Integer> map = new HashMap<>();
         map.put("I", 1);
         map.put("IV", 4);

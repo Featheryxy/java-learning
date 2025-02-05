@@ -28,6 +28,56 @@ public class LC0005LongestPalindromicSubstring {
         System.out.println(longestPalindrome2(s));
     }
 
+    /**
+     * LC0005 最长回文子串
+     * 数据结构：String
+     * 解题方法：三指针
+     * 定义：回文子串, abba
+     * 解题思路：遍历字符串，当前字符的左右两边字符相等则为回文子串。
+     *         偶数时，左右两指针分边为i，i+1
+     *         奇数时，左右两指针分边为i-1，i+1
+     * 初始时：
+     *         字符串的长度小等于1时，其必然回文
+     *         定义初始最长回文子串为第一个字符
+     * 遍历时：指针最后停在回文子串的前一个和后一个位置上，所以 子串长度为 r-l+1-2, 左边界为 l+1， 右边界为r
+     * ps: substring(begIdx, endIdx), [begIdx, endIdx)
+     * tips: char[] chars = s.toCharArray();
+     * @param s
+     * @return
+     */
+    public String longestPalindrome(String s) {
+        if (s.length() == 0) {
+            return s;
+        }
+        char[] chars = s.toCharArray();
+        int length = chars.length;
+        String longestStr = s.charAt(0)+"";
+        for (int i = 0; i < length; i++) {
+            // 奇数情况
+            int leftIdx = i - 1, rightIdx = i + 1;
+            while (leftIdx >= 0 && rightIdx < length && chars[leftIdx] == chars[rightIdx]) {
+                leftIdx--;
+                rightIdx++;
+            }
+
+            if (rightIdx - leftIdx-1 > longestStr.length()) {
+                longestStr = s.substring(leftIdx+1, rightIdx );
+            }
+
+            // 偶数情况
+            leftIdx = i - 1;
+            rightIdx = i;
+            while (leftIdx >= 0 && rightIdx < length && chars[leftIdx] == chars[rightIdx]) {
+                leftIdx--;
+                rightIdx++;
+            }
+            if (rightIdx - leftIdx-1 > longestStr.length()) {
+                longestStr = s.substring(leftIdx+1, rightIdx );
+            }
+        }
+        return longestStr;
+    }
+
     // 中心扩散法，遍历整个字符串，如果一个字符的左右相等，则改字符串回文
     //s = babad， 假设index= 1， l=0，r=1，s(l) == r(l)
     public static String longestPalindrome2(String s) {
@@ -84,7 +134,7 @@ public class LC0005LongestPalindromicSubstring {
     }
 
     // 暴力解法，遍历所有的子串
-    public static String longestPalindrome(String s) {
+    public static String longestPalindrome3(String s) {
 
         int len = s.length();
         if (len == 1) {

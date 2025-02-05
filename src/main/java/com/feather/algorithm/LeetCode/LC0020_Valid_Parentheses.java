@@ -5,6 +5,7 @@ package com.feather.algorithm.LeetCode;
 import com.feather.algorithm.Tag;
 
 import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,56 +44,43 @@ public class LC0020_Valid_Parentheses {
         System.out.println(isValid(s));
     }
 
+
+    /**
+     * 数据结构：Stack
+     * 解题方法：
+     * 定义：哈希表记录对应括号的关系，注意 key 为], value 为 [
+     * 解题思路：
+     *     1.依次遍历每个字符，如果栈中有匹配的的字符，将栈中元素弹出，否者入栈
+     *     2. 如果最后栈为空，则证明括号匹配成功
+     * 初始时：
+     * 遍历时：
+     * ps: 1. 使用双端队列ArrayDeque
+     *     2. peek 查看栈顶元素，不弹出
+     *     3. pop 弹出栈顶元素
+     *     4. push 入栈
+     *
+     */
     public static boolean isValid(String s) {
         Map<Character, Character> map = new HashMap<>();
         map.put(')', '(');
         map.put(']', '[');
         map.put('}', '{');
 
-        ArrayDeque<Character> stack = new ArrayDeque<>();
-        for (int i = 0; i < s.length(); i++) {
-            char tmpChar = s.charAt(i);
-            // 出栈
-            if (!stack.isEmpty() && stack.peek() == map.get(tmpChar)) {
-                stack.pop();
+        char[] chars = s.toCharArray();
+        ArrayDeque<Character> deque = new ArrayDeque<>();
+        for (char aChar : chars) {
+            if (!deque.isEmpty() && (deque.peek() == map.get(aChar))) {
+                deque.pop();
             } else {
-                // 进栈
-                stack.push(tmpChar);
+                deque.push(aChar);
             }
-        }
 
-        return stack.isEmpty();
+        }
+        return deque.isEmpty();
+
     }
 
-    // 1. 使用哈希表记录
-    // 2. 先将第一个元素进栈, 接下来每次进栈时，都对比进栈元素和栈顶元素是否匹配，匹配则将栈顶元素弹出，否则进栈
-    // 3. 如果最后栈中无元素，则证明括号匹配成功
-    public static boolean isValid2(String s) {
-        Map<Character, Character> map = new HashMap<>();
-        map.put(')', '(');
-        map.put(']', '[');
-        map.put('}', '{');
+ 
 
-        ArrayDeque<Character> stack = new ArrayDeque<>();
-        for (int i = 0; i < s.length(); i++) {
-            char tmpChar = s.charAt(i);
-            // 可以将第一次循环的内容写在最后，并且在接下来的操作中加上条件
-            if (i == 0) {
-                stack.push(tmpChar);
-                continue;
-            }
 
-            // if tmpChar='[',  map.get(tmpChar) == null ,
-            // if stack is empty, then stack.peek is also null
-            // then we get stack.peek() == map.get(tmpChar) == null
-            // then stack.pop() will throw NoSuchElementException
-            // so we must add !stack.isEmpty()
-            if (!stack.isEmpty() && stack.peek() == map.get(tmpChar)) {
-                stack.pop();
-            } else {
-                stack.push(tmpChar);
-            }
-        }
-        return stack.isEmpty();
-    }
 }
