@@ -2,7 +2,7 @@ package com.feather.util;
 
 
 
-import com.sun.jmx.snmp.Timestamp;
+//import com.sun.jmx.snmp.Timestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -38,7 +38,7 @@ public class DateUtil {
         System.out.println(name);
         System.out.println(System.currentTimeMillis());
 
-        Timestamp createTime = new Timestamp(new Date().getTime());
+//        Timestamp createTime = new Timestamp(new Date().getTime());
 
     }
 
