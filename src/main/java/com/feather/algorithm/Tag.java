@@ -15,9 +15,10 @@ public enum Tag {
     TWO_POINTERS,
     THREE_POINTERS,
 
+    DFS,
     BACKTRACKING,
     GREEDY,
-
+    DP,
     AGAIN;
 
 }
