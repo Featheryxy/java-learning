@@ -29,7 +29,6 @@ import java.util.List;
  */
 public class LC0110_Balanced_Binary_Tree {
     Tag[] tags = {Tag.BINARY_TREE};
-    private boolean ans = true;
 
     public static void main(String[] args) {
         // [1,2,2,3,3,null,null,4,4]
@@ -50,23 +49,37 @@ public class LC0110_Balanced_Binary_Tree {
 
     }
 
+    /**
+     * 个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1
+     * @param root
+     * @return
+     */
     public boolean isBalanced(TreeNode root) {
-        dfs(root);
-        return ans;
+        return  -1 != dfs(root);
     }
 
-    // 自低向上查找，借助了成员变量保存结果
+    // 自低向上查找，后跟遍历
     private int dfs(TreeNode node) {
+        // 空节点高度为0， 叶子节点高度为1
         if (node == null) {
             return 0;
         }
 
-        int left = 1 + dfs(node.left);
-        int right = 1 + dfs(node.right);
+        int left =  dfs(node.left);
+        if (left == -1) {
+            return left;
+        }
+
+        int right = dfs(node.right);
+        if (right == -1) {
+            return right;
+        }
+        // 如果左右子树高度差相差大于，返回-1， 语义为 非平衡二叉树
         if (Math.abs(left - right) > 1) {
-            ans = false;
             return -1;
         }
-        return Math.max(left, right);
+
+        // 当前节点的高度为 其最大左右子数高度+1
+        return Math.max(left, right) + 1;
     }
 }

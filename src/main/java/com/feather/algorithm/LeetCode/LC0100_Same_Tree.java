@@ -1,5 +1,7 @@
 package com.feather.algorithm.LeetCode;
 
+import com.feather.algorithm.Tag;
+
 /**
  * 给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。
  * <p>
@@ -18,15 +20,35 @@ package com.feather.algorithm.LeetCode;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class LC0100_Same_Tree {
+    Tag[] tags = {Tag.DFS, Tag.BINARY_TREE};
+
+
     public static void main(String[] args) {
         int[] p = {1, 2, 3}, q = {1, 2, 4};
         TreeNode treeNodeP = TreeNode.buildByArr(p);
         TreeNode treeNodeQ = TreeNode.buildByArr(q);
-        System.out.println(isSameTree(treeNodeP, treeNodeQ));
+        System.out.println(isSameTree2(treeNodeP, treeNodeQ));
     }
 
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {
+            return true;
+        }
+
+        if (p == null || q == null) {
+            return false;
+        }
+
+        if (!p.val.equals(q.val)) {
+            return false;
+        }
+
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    }
+
+
     // method1: 前根遍历，中跟遍历时值都相同
-    public static boolean isSameTree(TreeNode p, TreeNode q) {
+    public static boolean isSameTree2(TreeNode p, TreeNode q) {
         boolean preOrderSame = postOrderDfs(p, q);
 //        boolean inOrdersame = preOrderDfs(p, q);
 //        return preOrderSame && inOrdersame;
@@ -52,7 +74,7 @@ public class LC0100_Same_Tree {
 //        }
 
 
-        if (p.val != q.val) {
+        if (!p.val.equals(q.val)) {
             return false;
         }
 

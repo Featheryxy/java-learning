@@ -28,19 +28,34 @@ public class LC0112_Path_Sum {
     }
 
     public static boolean hasPathSum(TreeNode root, int targetSum) {
-        return dfs(root, 0, targetSum);
+        return dfs2(root, 0, targetSum);
+    }
+
+    private static boolean dfs(TreeNode root, int sumTemp, int targetSum) {
+        // 到了空节点还没有满足条件
+        if (root == null) {
+            return false;
+
+        }
+
+        if (root.left == null && root.right == null) {
+            return sumTemp == targetSum;
+        }
+
+        return dfs(root.left, sumTemp+root.val, targetSum) ||
+        dfs(root.right, sumTemp+root.val, targetSum);
     }
 
     // 初始时判断根节点是否为空，为空，直接返回false
     // 遍历时加上了 root.left != null 和 root.right != null, 所以他只遍历非空节点
     // tmpSum 记录搜索路径上值的和， i.e.:用以记录从根节点到当前节点上路径上值的和
-    private static boolean dfs(TreeNode root, int tmpSum, int targetSum) {
+    private static boolean dfs2(TreeNode root, int tmpSum, int targetSum) {
         // 如果根节点为空，直接返回false
         if (root == null) {
             return false;
         }
 
-        tmpSum = tmpSum + root.val;
+//        tmpSum = tmpSum + root.val;
 
         if (root.left == null && root.right == null) {
             return tmpSum == targetSum;
@@ -48,14 +63,14 @@ public class LC0112_Path_Sum {
 
         boolean findInLeft = false;
         if (root.left != null) {
-            findInLeft = dfs(root.left, tmpSum, targetSum);
+            findInLeft = dfs(root.left, tmpSum+ root.val, targetSum);
         }
 
 
         // 左子树没有找到 并且 当前节点的右节点存在
         boolean findInRight = false;
         if (!findInLeft && root.right != null) {
-            findInRight = dfs(root.right, tmpSum, targetSum);
+            findInRight = dfs(root.right, tmpSum+ root.val, targetSum);
         }
 
         return findInLeft || findInRight;

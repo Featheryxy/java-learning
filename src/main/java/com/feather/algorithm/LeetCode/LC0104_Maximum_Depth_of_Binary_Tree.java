@@ -25,13 +25,12 @@ import com.feather.algorithm.Tag;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class LC0104_Maximum_Depth_of_Binary_Tree {
-
+    // 二叉树的最大深度
     Tag[] tags = {Tag.BINARY_TREE};
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        root.left = null;
-        root.right = new TreeNode(2);
+        int[] p = {3, 9, 20, 0, 0, 15, 7};
+        TreeNode root = TreeNode.buildByArr(p);
 
         System.out.println(maxDepth(root));
     }
