@@ -41,5 +41,6 @@ public class Main {
         page.add(traynews);
         page.add(traysearch);
         page.output();
+
     }
 }
