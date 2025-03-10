@@ -3,6 +3,7 @@ package com.feather.algorithm;
 public enum Tag {
     MATH,
     ARRAY,
+    LinkList,
     STRING,
     HASH_TABLE,
     STACK,
